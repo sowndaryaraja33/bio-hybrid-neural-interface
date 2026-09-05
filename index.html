@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A browser prototype of a Brainoware-style bio-hybrid neural interface pipeline. A spoken vowel is encoded, delivered to a simulated neural organoid, and classified by a machine-learning readout." />
+  <title>Bio-Hybrid Neural Interface — Prototype</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="frame">
+
+  <header class="top">
+    <div class="eyebrow">SIMULATION · NOT A MEDICAL OR RESEARCH DEVICE</div>
+    <h1>Bio-Hybrid Neural Interface</h1>
+    <p>
+      A browser prototype of a Brainoware-style pipeline: a spoken vowel is encoded,
+      "delivered" to a simulated neural organoid through electrodes, and a
+      machine-learning readout reports what it heard. Every organoid and neuron shown
+      is a computational stand-in, not living tissue.
+    </p>
+  </header>
+
+  <div class="layout">
+
+    <!-- ── LEFT: Input panel ── -->
+    <div class="panel">
+      <h2>Input</h2>
+
+      <div class="mic-face">
+        <div class="mic-icon">🎙️</div>
+        <div class="mic-state" id="micState">Ready</div>
+      </div>
+
+      <p class="mic-hint">
+        Say a single vowel — A, E, I, O, or U — right after pressing start.
+        Recording lasts two seconds.
+      </p>
+
+      <button class="btn-primary"   id="startBtn">Start live demo</button>
+      <button class="btn-secondary" id="demoBtn">Run scripted demo</button>
+      <button class="btn-ghost"     id="resetBtn">Reset</button>
+    </div>
+
+    <!-- ── CENTER: Organoid canvas ── -->
+    <div class="panel center-panel">
+      <h2>Simulated neural organoid</h2>
+      <canvas id="organoid" width="900" height="460"></canvas>
+
+      <div class="stage-strip" id="stageStrip">
+        <span data-stage="voice">Voice input</span>
+        <span data-stage="encoder">Encoder</span>
+        <span data-stage="electrode">Electrodes</span>
+        <span data-stage="organoid">Organoid</span>
+        <span data-stage="activity">Activity</span>
+        <span data-stage="readout">ML readout</span>
+      </div>
+    </div>
+
+    <!-- ── RIGHT: ML readout panel ── -->
+    <div class="panel">
+      <h2>Readout probabilities</h2>
+      <div id="probList"></div>
+
+      <div class="result-box">
+        <div class="result-label">Predicted vowel</div>
+        <div class="result-value" id="resultValue">–</div>
+        <div class="result-conf"  id="resultConf">Confidence: 0%</div>
+      </div>
+    </div>
+
+  </div><!-- /.layout -->
+
+  <footer class="note">
+    <b>Prototype notes:</b> the organoid is a procedurally generated point cloud with
+    simulated activity decay, noise, and propagation. The live demo uses your
+    microphone's frequency spectrum as a rough stand-in for formant analysis, then
+    classifies against fixed reference profiles for A/E/I/O/U — this is illustrative,
+    not a validated speech classifier.
+  </footer>
+
+</div><!-- /.frame -->
+
+<script src="script.js"></script>
+</body>
+</html>
