@@ -385,7 +385,7 @@ startBtn.addEventListener("click", async () => {
   } catch (err) {
     micState.textContent = "Microphone unavailable";
     alert(
-      "Could not access the microphone. Try "Run scripted demo" instead, or check your browser mic permissions."
+      'Could not access the microphone. Try "Run scripted demo" instead, or check your browser mic permissions.'
     );
   } finally {
     setBusy(false);
